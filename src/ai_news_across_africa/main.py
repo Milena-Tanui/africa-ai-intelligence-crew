@@ -4,7 +4,7 @@ import warnings
 
 from datetime import datetime
 
-from latest_news_reports_per_country.crew import LatestNewsReportsPerCountry
+from ai_news_across_africa.crew import LatestNewsReportsPerCountry
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
@@ -18,7 +18,7 @@ def run():
     Run the crew.
     """
     inputs = {
-        'topic': 'AI LLMs',
+        'topic': 'AI Across Africa',
         'current_year': str(datetime.now().year)
     }
 
@@ -33,7 +33,7 @@ def train():
     Train the crew for a given number of iterations.
     """
     inputs = {
-        "topic": "AI LLMs",
+        "topic": "AI Across Africa",
         'current_year': str(datetime.now().year)
     }
     try:
@@ -57,7 +57,7 @@ def test():
     Test the crew execution and returns the results.
     """
     inputs = {
-        "topic": "AI LLMs",
+        "topic": "AI Across Africa",
         "current_year": str(datetime.now().year)
     }
 

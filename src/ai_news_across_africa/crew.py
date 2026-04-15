@@ -1,6 +1,8 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
+from crewai_tools import SerperDevTool
+from ai_news_across_africa.tools.sendgrid_tool import SendGridMailTool
 # If you want to run a snippet of code before or after the crew starts,
 # you can use the @before_kickoff and @after_kickoff decorators
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
@@ -22,6 +24,14 @@ class LatestNewsReportsPerCountry():
     def researcher(self) -> Agent:
         return Agent(
             config=self.agents_config['researcher'], # type: ignore[index]
+            verbose=True,
+            tools=[SerperDevTool()]
+        )
+
+    @agent
+    def africa_ai_filter(self) -> Agent:
+        return Agent(
+            config=self.agents_config['africa_ai_filter'], # type: ignore[index]
             verbose=True
         )
 
@@ -30,6 +40,14 @@ class LatestNewsReportsPerCountry():
         return Agent(
             config=self.agents_config['reporting_analyst'], # type: ignore[index]
             verbose=True
+        )
+
+    @agent
+    def email_sender(self) -> Agent:
+        return Agent(
+            config=self.agents_config['email_sender'], # type: ignore[index]
+            verbose=True,
+            tools=[SendGridMailTool()]
         )
 
     # To learn more about structured task outputs,
@@ -42,10 +60,22 @@ class LatestNewsReportsPerCountry():
         )
 
     @task
+    def filter_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['filter_task'], # type: ignore[index]
+        )
+
+    @task
     def reporting_task(self) -> Task:
         return Task(
             config=self.tasks_config['reporting_task'], # type: ignore[index]
             output_file='report.md'
+        )
+
+    @task
+    def email_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['email_task'], # type: ignore[index]
         )
 
     @crew

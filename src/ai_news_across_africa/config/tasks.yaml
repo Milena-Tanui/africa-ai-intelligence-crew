@@ -7,6 +7,14 @@ research_task:
     A list with 10 bullet points of the most relevant information about {topic}
   agent: researcher
 
+filter_task:
+  description: >
+    Review the research results and filter to keep only AI-related developments 
+    specifically from African countries. Focus on startups, funding, policy, tools, and events.
+  expected_output: >
+    A curated list of AI developments in Africa, organized by category.
+  agent: africa_ai_filter
+
 reporting_task:
   description: >
     Review the context you got and expand each topic into a full section for a report.
@@ -15,3 +23,11 @@ reporting_task:
     A fully fledged report with the main topics, each with a full section of information.
     Formatted as markdown without '```'
   agent: reporting_analyst
+
+email_task:
+  description: >
+    Take the finalized AI Africa briefing report and prepare it for email delivery.
+    Format it as clean, readable HTML suitable for email.
+  expected_output: >
+    An HTML-formatted email ready to send with the AI Africa briefing report.
+  agent: email_sender

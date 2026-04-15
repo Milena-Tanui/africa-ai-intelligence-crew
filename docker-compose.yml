@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  crewai-app:
+    build: .
+    container_name: ai-news-crew
+    environment:
+      - MODEL=claude-3-5-sonnet-20241022
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - SERPER_API_KEY=${SERPER_API_KEY}
+      - SENDGRID_API_KEY=${SENDGRID_API_KEY}
+    volumes:
+      - ./report.md:/app/report.md
+      - ./logs:/app/logs
+    restart: on-failure
+    networks:
+      - crewai-network
+
+networks:
+  crewai-network:
+    driver: bridge

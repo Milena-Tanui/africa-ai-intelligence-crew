@@ -1,20 +1,22 @@
 [project]
-name = "latest_news_reports_per_country"
+name = "ai_news_across_africa"
 version = "0.1.0"
 description = "latest-news-reports-per-country using crewAI"
 authors = [{ name = "Your Name", email = "you@example.com" }]
 requires-python = ">=3.10,<3.14"
 dependencies = [
+    "anthropic>=0.95.0",
     "crewai[google-genai,tools]==1.14.1",
+    "sendgrid==6.11.0",
 ]
 
 [project.scripts]
-latest_news_reports_per_country = "latest_news_reports_per_country.main:run"
-run_crew = "latest_news_reports_per_country.main:run"
-train = "latest_news_reports_per_country.main:train"
-replay = "latest_news_reports_per_country.main:replay"
-test = "latest_news_reports_per_country.main:test"
-run_with_trigger = "latest_news_reports_per_country.main:run_with_trigger"
+ai_news_across_africa = "ai_news_across_africa.main:run"
+run_crew = "ai_news_across_africa.main:run"
+train = "ai_news_across_africa.main:train"
+replay = "ai_news_across_africa.main:replay"
+test = "ai_news_across_africa.main:test"
+run_with_trigger = "ai_news_across_africa.main:run_with_trigger"
 
 [build-system]
 requires = ["hatchling"]
@@ -22,3 +24,6 @@ build-backend = "hatchling.build"
 
 [tool.crewai]
 type = "crew"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ai_news_across_africa"]

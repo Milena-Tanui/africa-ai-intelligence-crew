@@ -22,10 +22,10 @@ crewai install
 
 **Add your `OPENAI_API_KEY` into the `.env` file**
 
-- Modify `src/latest_news_reports_per_country/config/agents.yaml` to define your agents
-- Modify `src/latest_news_reports_per_country/config/tasks.yaml` to define your tasks
-- Modify `src/latest_news_reports_per_country/crew.py` to add your own logic, tools and specific args
-- Modify `src/latest_news_reports_per_country/main.py` to add custom inputs for your agents and tasks
+- Modify `src/ai_news_across_africa/config/agents.yaml` to define your agents
+- Modify `src/ai_news_across_africa/config/tasks.yaml` to define your tasks
+- Modify `src/ai_news_across_africa/crew.py` to add your own logic, tools and specific args
+- Modify `src/ai_news_across_africa/main.py` to add custom inputs for your agents and tasks
 
 ## Running the Project
 
