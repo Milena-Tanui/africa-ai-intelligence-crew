@@ -69,6 +69,5 @@ src/ai_news_across_africa/
 ```
 
 **Builder:** Milena Tanui, AI Agent Builder & Automation Architect — Nairobi, Kenya
-```
 
 ---
