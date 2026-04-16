@@ -1,73 +1,127 @@
-# AI News Across Africa — Intelligence Crew
+# 🌍 Africa AI Intelligence Crew
 
-A Python-powered multi-agent AI system that autonomously researches, filters, and delivers a weekly briefing on AI developments across Africa — startups, funding rounds, policy updates, tools, and events — straight to your inbox.
+A multi-agent AI system that automatically researches, filters, and delivers a structured weekly briefing on AI developments across Africa — deployed on CrewAI.
 
-## Overview
+Built with **CrewAI**, **Python**, **SerperDev**, and **SendGrid**.
 
-Built with CrewAI and Python, this crew runs a fully automated intelligence pipeline. Four specialized agents work sequentially: one searches the web, one filters for African AI relevance, one structures the findings into a clean report, and one delivers it as a formatted HTML email via SendGrid.
+---
 
-## Agent Workflow
+## What It Does
 
-**4 agents. 4 tasks. 1 briefing.**
+This crew runs a fully automated intelligence pipeline that:
 
-1. **Researcher** — Searches the web for the latest AI news, startups, funding rounds, and policy updates across Africa using SerperDev
-2. **Africa AI Filter** — Reviews the research and keeps only AI-relevant developments from African countries — Nigeria, Kenya, South Africa, Egypt, and beyond
-3. **Reporting Analyst** — Structures the filtered results into a categorized weekly briefing covering startups, funding, policy, tools, and events
-4. **Email Sender** — Formats the final report as clean HTML and delivers it to the recipient's inbox via SendGrid
+1. **Searches the web** for the latest AI news, startups, funding rounds, policy updates, and events across Africa
+2. **Filters the results** to keep only content that is genuinely AI-related and Africa-specific
+3. **Structures the findings** into a clean, categorized briefing report saved as `report.md`
+4. **Emails the report** as a formatted HTML briefing to a recipient's inbox via SendGrid
+
+The output is an executive-level AI briefing that busy professionals can scan in under 3 minutes.
+
+---
+
+## Agent Architecture
+
+The crew runs four agents sequentially:
+
+| Agent | Role | Tool |
+|---|---|---|
+| `researcher` | Searches the web for the latest AI news across Africa | SerperDev (web search) |
+| `africa_ai_filter` | Curates results — keeps only AI-specific, Africa-relevant content | — |
+| `reporting_analyst` | Structures the filtered data into a categorized markdown report | — |
+| `email_sender` | Formats the report as HTML and delivers it via email | SendGrid |
+
+---
 
 ## Report Format
 
-Each weekly briefing includes:
-- **Headline Summary** — 3-sentence overview of the most important developments
-- **Startups & Products** — What launched and who built it
-- **Funding & Investment** — Rounds, amounts, and investor details
-- **Policy & Regulation** — Government and regulatory updates
-- **Tools & Research** — New tools and papers worth knowing
-- **Events & Opportunities** — Upcoming dates and links
-- **Key Takeaway** — One bold insight from the week
+The reporting analyst produces a structured briefing in this format:
 
-## Technical Stack
+```
+📌 HEADLINE SUMMARY
+A 3-sentence overview of the most important AI developments in Africa this week.
 
-- **Python** for the core pipeline and agent logic
-- **CrewAI** for multi-agent orchestration
-- **SerperDev** for real-time web search
-- **SendGrid** for HTML email delivery
-- **Sequential process** — each agent builds on the previous output
+🚀 Startups & Products
+💰 Funding & Investment
+📜 Policy & Regulation
+🛠️ Tools & Research
+📅 Events & Opportunities
 
-## Setup
+⚡ KEY TAKEAWAY
+One bold insight or trend emerging from this week's developments.
+```
 
-1. Clone the repo and install dependencies:
-   ```
-   pip install uv
-   crewai install
-   ```
+---
 
-2. Add your API keys to a `.env` file:
-   ```
-   OPENAI_API_KEY=your_key
-   SERPER_API_KEY=your_key
-   SENDGRID_API_KEY=your_key
-   ```
+## Tech Stack
 
-3. Run the crew:
-   ```
-   crewai run
-   ```
+- [CrewAI](https://crewai.com) — multi-agent orchestration
+- [SerperDev](https://serper.dev) — real-time web search tool
+- [SendGrid](https://sendgrid.com) — email delivery
+- Python 3.10–3.13
+- Docker (optional, included)
 
-The pipeline generates a `report.md` file locally and sends the HTML briefing to the configured recipient email.
+---
+
+## Setup & Installation
+
+### Prerequisites
+
+- Python >=3.10 <3.14
+- [uv](https://docs.astral.sh/uv/) package manager
+
+### Install
+
+```bash
+pip install uv
+crewai install
+```
+
+### Environment Variables
+
+Create a `.env` file in the root with:
+
+```env
+SERPER_API_KEY=your_serper_key
+SENDGRID_API_KEY=your_sendgrid_key
+```
+
+---
+
+## Running the Crew
+
+```bash
+crewai run
+```
+
+This kicks off the full pipeline. The crew will:
+- Search for AI news across Africa
+- Filter and curate the results
+- Save a structured report to `report.md`
+- Email the briefing to the configured recipient
+
+---
 
 ## Project Structure
 
 ```
-src/ai_news_across_africa/
-├── config/
-│   ├── agents.yaml      # Agent roles, goals, and backstories
-│   └── tasks.yaml       # Task descriptions and expected outputs
-├── tools/
-│   └── sendgrid_tool.py # Custom SendGrid email tool
-└── crew.py              # Crew assembly and orchestration logic
+africa-ai-intelligence-crew/
+├── src/ai_news_across_africa/
+│   ├── config/
+│   │   ├── agents.yaml       # Agent roles and goals
+│   │   └── tasks.yaml        # Task definitions
+│   ├── tools/
+│   │   └── sendgrid_tool.py  # Custom SendGrid email tool
+│   ├── crew.py               # Crew wiring and agent/task setup
+│   └── main.py               # Entry point
+├── knowledge/                # Optional knowledge sources
+├── report.md                 # Generated output (created on run)
+├── Dockerfile
+├── docker-compose.yml
+└── pyproject.toml
 ```
 
-**Builder:** Milena Tanui, AI Agent Builder & Automation Architect — Nairobi, Kenya
-
 ---
+
+## Built By
+
+[Milena Tanui](https://milena-tanui.github.io/Portfolio/) — AI Agent Builder & Automation Architect
