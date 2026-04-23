@@ -19,6 +19,22 @@ The output is an executive-level AI briefing that busy professionals can scan in
 
 ---
 
+## Screenshots
+
+### Agent Configuration
+![Agents Config](assets/agents-config.png)
+*Four agents defined in `agents.yaml` — each with a specific role, goal, and backstory*
+
+### Crew Execution
+![Crew Running](assets/crew-running.png)
+*`crewai run` — crew starts, tasks fire sequentially, agents execute in order*
+
+### Sample Report Output
+![Report Output](assets/report-output.png)
+*Generated `report.md` — headline summary, categorized briefing, and key takeaway*
+
+---
+
 ## Agent Architecture
 
 The crew runs four agents sequentially:
@@ -113,6 +129,7 @@ africa-ai-intelligence-crew/
 │   │   └── sendgrid_tool.py  # Custom SendGrid email tool
 │   ├── crew.py               # Crew wiring and agent/task setup
 │   └── main.py               # Entry point
+├── assets/                   # Screenshots
 ├── knowledge/                # Optional knowledge sources
 ├── report.md                 # Generated output (created on run)
 ├── Dockerfile
@@ -124,4 +141,4 @@ africa-ai-intelligence-crew/
 
 ## Built By
 
-[Milena Tanui](https://milena-tanui.github.io/Portfolio/) — AI Agent Builder & Automation Architect
+[Milena Tanui](https://milena-tanui.github.io/Portfolio/) — AI Agent Builder & Automation Architect — Nairobi, Kenya
